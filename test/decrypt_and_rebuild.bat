@@ -88,7 +88,6 @@ del /q inner.zip 2>nul
 del /q pgsHZz_re.apk.idsig 2>nul
 del /q pgsHZz_re-unsigned.apk 2>nul
 del /q sample.zip 2>nul
-del /q sample_re.apk 2>nul
 del /q sample_re_signed.apk 2>nul
 del /q sample_re_signed.apk.idsig 2>nul
 del /q test.keystore 2>nul
@@ -98,3 +97,4 @@ echo ==================================
 echo   DONE : sample_re_signed.apk
 echo ==================================
 pause
+
