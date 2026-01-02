@@ -12,13 +12,21 @@ set INNER_APK=pgsHZz.apk
 
 REM ================= sample.apk 압축 해제 =================
 echo [*] Unzip sample.apk
-copy %SAMPLE_APK% sample.zip >nul
-powershell -Command "Expand-Archive -Force sample.zip sample_unzip"
+if exist sample_unzip rmdir /s /q sample_unzip
+mkdir sample_unzip
+
+cd sample_unzip
+jar xf ..\%SAMPLE_APK%
+cd ..
 
 REM ================= 내부 APK 압축 해제 =================
 echo [*] Unzip inner apk
-copy sample_unzip\assets\%INNER_APK% inner.zip >nul
-powershell -Command "Expand-Archive -Force inner.zip pgsHZz_unzip"
+if exist pgsHZz_unzip rmdir /s /q pgsHZz_unzip
+mkdir pgsHZz_unzip
+
+cd pgsHZz_unzip
+jar xf ..\sample_unzip\assets\%INNER_APK%
+cd ..
 
 REM ================= DEX 복호화 =================
 echo [*] Decrypt dex
@@ -97,5 +105,3 @@ echo ==================================
 echo   DONE : sample_re_signed.apk
 echo ==================================
 pause
-
-
